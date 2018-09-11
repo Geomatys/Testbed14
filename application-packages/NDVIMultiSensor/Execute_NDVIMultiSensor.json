@@ -1,0 +1,22 @@
+{
+    "inputs": [
+        {
+            "id": "files",
+            "value": {
+                "valueReference": "http://localhost:8080/files/S2A_MSIL1C_20180610T154901_N0206_R054_T18TXR_20180610T193029.SAFE.zip"
+            }
+        },
+        {
+            "id": "files",
+            "value": {
+                "valueReference": "http://localhost:8080/files/PROBAV_L1C_20160101_004905_2_V101.HDF5"
+            }
+        }
+    ],
+    "outputs": [
+        {
+            "id": "output",
+            "transmissionMode": "reference"
+        }
+    ]
+}
