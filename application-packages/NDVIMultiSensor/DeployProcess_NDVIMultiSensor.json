@@ -14,21 +14,12 @@
                             {
                                 "mimeType": "application/zip",
                                 "default": true
+                            },{
+                                "mimeType": "application/x-hdf",
                             }
                         ],
                         "minOccurs": 1,
                         "maxOccurs": "unbounded",
-                        "additionalParameters": [
-                            {
-                                "role": "http://www.opengis.net/eoc/applicationContext/inputMetadata",
-                                "parameters": [
-                                    {
-                                        "name": "EOImage",
-                                        "value": "true"
-                                    }
-                                ]
-                            }
-                        ]
                     }
                 ],
                 "outputs": [
