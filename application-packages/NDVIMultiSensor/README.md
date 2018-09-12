@@ -1,33 +1,41 @@
 # NDVI multiSpectral process
 
-NDVI is calculated after the two bands values Near Infrared and red.
-It is calculated by this formula : NDVI = (NIR-Red)/(NIR+Red)
-The images needed for NDVI calculation must follow these constraints :
+This process compute a [Normalized Difference Vegetation Index](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index) (NDVI) from an input list of satellite images.
 
-- Sentinel-2 (JPEG2000)
-- Proba-V (HDF5)
+The NDVI is calculated as follows:
 
-The processing consists in :
--   for each image, generate a NDVI GeoTIFF image, with the same CRS and resolution as the original one
--   copy the NDVI images in the output folder (the new files are named with an uuid)
+    NDVI = (NIR − Red) / (NIR + Red)
 
-Test data can be found at the following location :
-- https://nexus.geomatys.com/repository/raw-public/testbed14/S2A_MSIL1C_20180610T154901_N0206_R054_T18TXR_20180610T193029.SAFE.zip (sentinel-2)
-- https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160101_004905_2_V101.HDF5 (Proba-V)
+The process support the following image types:
+* Sentinel-2 - as a zipped SAFE file
+* Proba-V - as a HDF5 file
 
-# CWL
-here is a reference to the CWL file : 
-https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor.cwl
+For each input image, the process generate the NDVI as a GeoTIFF image with the same CRS and resolution as the original one
 
-using the docker image : images.geomatys.com/ndvims:latest
+## Requirements
+This process requires the following components to be installed:
+* cwl-runner
+* docker engine
 
-usage : 
-cwl-runner --no-read-only --preserve-entire-environment  https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor.cwl https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor_CWL_params.json
+## Execution
 
+The process workflow is described within the [NDVIMultiSensor.cwl](https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor.cwl) file
 
-**Warning:** 
-cwl-runner use a lot a memory to download large files. If you experience some memory error, consider to download the files and then reference them locally in a JSON parameter file.
+The list of input images should be provided within the [NDVIMultiSensor_CWL_params.json](https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor_CWL_params.json) file
 
+The NDVIMultiSensor_CWL_params.json references the input files to process. Files can be defined from paths or urls.
+
+You can download or reference the following images for test purpose:
+* Sentinel-2 image [S2A_MSIL1C_20180610T154901_N0206_R054_T18TXR_20180610T193029](https://nexus.geomatys.com/repository/raw-public/testbed14/S2A_MSIL1C_20180610T154901_N0206_R054_T18TXR_20180610T193029.SAFE.zip)
+* Proba-V image [PROBAV_L1C_20160101_004905_2_V101](https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160101_004905_2_V101.HDF5)
+
+To execute the process:
+
+    cwl-runner --no-read-only --preserve-entire-environment NDVIMultiSensor.cwl NDVIMultiSensor_CWL_params.json
+
+*Note 1: the process will use the docker image images.geomatys.com/ndvims:latest*
+
+*Note 2: cwl-runner needs at least 8 Go of RAM to download large files. If you experience some memory error, consider to download the files and then reference them locally in the NDVIMultiSensor_CWL_params.json parameter file.*
 
 # WPS
 in order to call this process in WPS :
