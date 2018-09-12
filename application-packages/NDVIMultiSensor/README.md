@@ -22,26 +22,11 @@ https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages
 using the docker image : images.geomatys.com/ndvims:latest
 
 usage : 
-cwl-runner --no-read-only --preserve-entire-environment  https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor.cwl params.json
+cwl-runner --no-read-only --preserve-entire-environment  https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor.cwl https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor_CWL_params.json
 
-with a params.json containing :
-```json
-{
-    "files": [
-        {
-	    "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/S2A_MSIL1C_20180610T154901_N0206_R054_T18TXR_20180610T193029.SAFE.zip",
-	    "class": "File"
-        },
-        {
-            "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160101_004905_2_V101.HDF5",
-            "class": "File"
-        }
-    ]
-}
-```
 
 **Warning:** 
-cwl-runner use a lot a memory to download large files. If you experience some memory error, consider to download the files and then reference them locally in params.json
+cwl-runner use a lot a memory to download large files. If you experience some memory error, consider to download the files and then reference them locally in a JSON parameter file.
 
 
 # WPS
