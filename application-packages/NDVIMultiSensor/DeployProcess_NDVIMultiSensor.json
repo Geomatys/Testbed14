@@ -15,11 +15,17 @@
                                 "mimeType": "application/zip",
                                 "default": true
                             },{
-                                "mimeType": "application/x-hdf",
+                                "mimeType": "application/x-hdf"
                             }
                         ],
                         "minOccurs": 1,
                         "maxOccurs": "unbounded",
+                        "additionalParameters": [
+                            {
+                                "name": "EOImage",
+                                "value": ["true"]
+                            }
+			]
                     }
                 ],
                 "outputs": [
