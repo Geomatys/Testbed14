@@ -46,7 +46,7 @@ To execute the process using cwl-runner, you need two files:
 * The process workflow (e.g. [NDVIMultiSensor.cwl](https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor.cwl))
 * The parameters file which contains the list of input images to be processed (e.g. [NDVIMultiSensor_CWL_params.json](https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor_CWL_params.json))
 
-The NDVIMultiSensor_CWL_params.json references the input files to process. Files can be defined from paths or urls.
+The NDVIMultiSensor_CWL_params.json references the input files to process.
 
 To execute the process:
 
@@ -60,29 +60,3 @@ The result (e.g. b98b9e16-7d29-42d7-87da-56347f046858.tif) is available within $
 *Note 2: the process will use the docker image images.geomatys.com/ndvims:latest*
 
 *Note 3: cwl-runner needs at least 8 Go of RAM to download large files. If you experience some memory error, consider to download the files and then reference them locally in the NDVIMultiSensor_CWL_params.json parameter file.*
-
-# WPS
-in order to call this process in WPS :
-
-1) Deploy request :
-https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/DeployProcess_NDVIMultiSensor.json
-
-2) Execute request :
-https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/Execute_NDVIMultiSensor.json
-
-the result will look like this:
-```json
-{
-  "outputs": [
-    {
-      "id": "output",
-      "value": "http://<wps hosting url>/3e75093e-9f41-4fd9-b95b-69cc7594dcd1.tif"
-    },
-    {
-      "id": "output",
-      "value": "http://<wps hosting url>/4d8a989f-49e5-4ae4-b830-b768aaf9a289.tif"
-    }
-  ]
-}
-```
-
