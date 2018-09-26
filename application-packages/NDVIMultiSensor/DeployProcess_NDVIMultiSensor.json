@@ -19,7 +19,13 @@
                             }
                         ],
                         "minOccurs": 1,
-                        "maxOccurs": "unbounded"
+                        "maxOccurs": "unbounded",
+                        "additionalParameters": [
+                            {
+                                "name": "EOImage",
+                                "value": ["true"]
+                            }
+			                  ]
                     }
                 ],
                 "outputs": [
