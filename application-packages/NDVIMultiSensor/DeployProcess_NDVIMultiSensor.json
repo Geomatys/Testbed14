@@ -15,11 +15,11 @@
                                 "mimeType": "application/zip",
                                 "default": true
                             },{
-                                "mimeType": "application/x-hdf",
+                                "mimeType": "application/x-hdf"
                             }
                         ],
                         "minOccurs": 1,
-                        "maxOccurs": "unbounded",
+                        "maxOccurs": "unbounded"
                     }
                 ],
                 "outputs": [
