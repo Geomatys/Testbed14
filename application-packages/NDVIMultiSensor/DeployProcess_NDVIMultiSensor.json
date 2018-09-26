@@ -1,60 +1,61 @@
 {
-    "processDescription": {
-        "processOffering": {
-            "process": {
-                "id": "NDVIMultiSensor",
-                "title": "NDVIMultiSensor",
-                "abstract": "",
-                "keywords": [],
-                "inputs": [
-                    {
-                        "id": "files",
-                        "title": "Input Image",
-                        "formats": [
-                            {
-                                "mimeType": "application/zip",
-                                "default": true
-                            },{
-                                "mimeType": "application/x-hdf"
-                            }
-                        ],
-                        "minOccurs": 1,
-                        "maxOccurs": "unbounded",
-                        "additionalParameters": [
-                            {
-                                "name": "EOImage",
-                                "value": ["true"]
-                            }
-			                  ]
-                    }
-                ],
-                "outputs": [
-                    {
-                        "id": "output",
-                        "title": "NDVI Images",
-                        "formats": [
-                            {
-                                "mimeType": "application/octet-stream",
-                                "default": true
-                            }
-                        ]
-                    }
-                ],
-                "version": "1.0.0",
-                "jobControlOptions": [
-                    "async-execute"
-                ],
-                "outputTransmission": [
-                    "reference"
-                ]
+  "processDescription": {
+    "process": {
+      "id": "NDVIMultiSensor",
+      "title": "NDVIMultiSensor",
+      "abstract": "Normalized Difference Vegetation Index (NDVI) from an input list of satellite images.",
+      "keywords": ["NDVI"],
+      "inputs": [
+        {
+          "id": "files",
+          "title": "Input Image",
+          "formats": [
+            {
+              "mimeType": "application/zip",
+              "default": true
+            },{
+              "mimeType": "application/x-hdf"
             }
+          ],
+          "minOccurs": "1",
+          "maxOccurs": "unbounded",
+          "additionalParameters": [
+            {
+              "role": "http://www.opengis.net/eoc/applicationContext/inputMetadata",
+              "parameters": [
+                {
+                  "name": "EOImage",
+                  "value": "true"
+                }
+              ]
+            }
+          ]
         }
-    },
-    "immediateDeployment": true,
-    "executionUnit": [{
-            "reference": {
-                "href": "https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor.cwl"
+      ],
+      "outputs": [
+        {
+          "id": "output",
+          "title": "NDVI Images",
+          "formats": [
+            {
+              "mimeType": "application/octet-stream",
+              "default": true
             }
-        }],
-    "deploymentProfileName": "deploy 1"
+          ]
+        }
+      ],
+      "version": "1.0.0",
+      "jobControlOptions": [
+        "async-execute"
+      ],
+      "outputTransmission": [
+        "reference"
+      ]
+    }
+  },
+  "immediateDeployment": true,
+  "executionUnit": [{
+      "href": "https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor.cwl"
+  }],
+  "deploymentProfileName" : "http://www.opengis.net/profiles/eoc/dockerizedApplication"
 }
