@@ -1,6 +1,8 @@
 # ADES WPS server
 
-Application Deployment and Execution Service (ADES) package
+The Application Deployment and Execution Service (ADES) is an implementation of the [OGC Testbed14 REST Transactional WPS 2.0 specification](https://app.swaggerhub.com/apis/Spacebel.be/WPS/Testbed14)
+
+You can test ADES component on a [demo server provided by VITO](http://ades.vgt.vito.be/WS/wps/default)
 
 ## Requirements
 ADES requires the following components to be installed:
@@ -36,6 +38,7 @@ Deploy an ADES instance
         -e CSTL_URL=http://localhost:${ADES_PORT} \
         -e CSTL_SERVICE_URL=http://localhost:${ADES_PORT}/WS images.geomatys.com/examind-ades
 
+#### 
 
 ### Check deployment
 
