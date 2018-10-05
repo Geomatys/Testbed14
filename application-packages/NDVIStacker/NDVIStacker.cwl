@@ -10,8 +10,6 @@
         "files": {
             "inputBinding": {
                 "position": 1,
-                "prefix": "-Pfiles",
-                "itemSeparator": ","
             },
             "type": {
                 "type": "array",
@@ -22,10 +20,9 @@
     "outputs": {
         "output": {
             "outputBinding": {
-                "glob": "stacked.tif"
+                "glob": "out.tif"
             },
             "type": "File",
         }
     }
 }
-

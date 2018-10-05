@@ -1,0 +1,12 @@
+{
+    "files": [
+        {
+            "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/ab44ddb3-a6ce-4adc-9178-741d3fed5e56.tif",
+            "class": "File"
+        },
+        {
+            "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/e8e8788f-e0e2-4201-83e0-6b445e658d0b.tif",
+            "class": "File"
+        }
+    ]
+}
