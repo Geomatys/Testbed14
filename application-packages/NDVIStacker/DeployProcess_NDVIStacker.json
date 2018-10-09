@@ -29,15 +29,15 @@
                         }
                     ]
                 }
-            ],
-            "version": "1.0.0",
-            "jobControlOptions": [
-                "async-execute"
-            ],
-            "outputTransmission": [
-                "reference"
             ]
-        }
+        },
+        "processVersion": "1.0.0",
+        "jobControlOptions": [
+            "async-execute"
+        ],
+        "outputTransmission": [
+            "reference"
+        ]
     },
   "immediateDeployment": true,
   "executionUnit": [{

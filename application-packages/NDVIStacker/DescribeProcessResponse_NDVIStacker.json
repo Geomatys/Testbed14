@@ -36,14 +36,14 @@
         ]
       }
     ],
-    "version": "1.0.0",
-    "jobControlOptions": [
-      "async-execute"
-    ],
-    "outputTransmission": [
-      "reference"
-    ],
-    "executeEndpoint": "http://ades.vgt.vito.be/WS/wps/default/processes/NDVIStacker/jobs",
+    "executeEndpoint": "http://tbd14.geomatys.com/WS/wps/default/processes/NDVIStacker/jobs",
     "abstract": ""
-  }
+  },
+  "processVersion": "1.0.0",
+  "jobControlOptions": [
+    "async-execute"
+  ],
+  "outputTransmission": [
+    "reference"
+  ]
 }

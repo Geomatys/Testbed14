@@ -1,11 +1,11 @@
 {
     "files": [
         {
-            "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/ab44ddb3-a6ce-4adc-9178-741d3fed5e56.tif",
+            "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160505_232748_3_V101.tif",
             "class": "File"
         },
         {
-            "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/e8e8788f-e0e2-4201-83e0-6b445e658d0b.tif",
+            "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160505_232949_3_V101.tif",
             "class": "File"
         }
     ]
