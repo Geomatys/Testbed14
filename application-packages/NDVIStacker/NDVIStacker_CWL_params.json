@@ -1,0 +1,12 @@
+{
+    "files": [
+        {
+            "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160505_232748_3_V101.tif",
+            "class": "File"
+        },
+        {
+            "location": "https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160505_232949_3_V101.tif",
+            "class": "File"
+        }
+    ]
+}

@@ -22,6 +22,10 @@ To deploy an ADES container you need to map the local docker configuration with 
     export DOCKER_BINARY=/usr/local/bin/docker
     export DOCKER_SOCKET=/var/run/docker.sock
 
+For authentication, define the IDP URL :
+
+    export IDP_URL="https://eodata-iam.user.eocloud.eu:8080/oauth2/userinfo?schema=openid"
+
 Then defines the port to run ADES on localhost and an **existing** directory on the local machine that will be shared with the ADES component.
 
     export ADES_SHARED_DIR=/tmp/ades_shared
@@ -34,6 +38,7 @@ Deploy an ADES instance
         -v ${DOCKER_SOCKET}:/var/run/docker.sock \
         -v ${DOCKER_BINARY}:/usr/bin/docker \
         -v ${ADES_SHARED_DIR}:${ADES_SHARED_DIR} \
+	-e IDP_URL=${IDP_URL} \
         -e EXAMIND_CWL_SHARED_DIR=${ADES_SHARED_DIR} \
         -e CSTL_URL=http://localhost:${ADES_PORT} \
         -e CSTL_SERVICE_URL=http://localhost:${ADES_PORT}/WS images.geomatys.com/examind-ades
@@ -44,16 +49,29 @@ Deploy an ADES instance
 
 Check if ADES is correctly deployed:
 
-    curl -X GET "http://localhost:${ADES_PORT}/WS/wps/default"
+    curl -X GET "http://localhost:${ADES_PORT}/WS/wps/default?f=json"
 
 You should get the following answer
 
-    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-    <ns2:ExceptionReport xmlns:ows="http://www.opengis.net/ows" xmlns:ns2="http://www.opengis.net/ows/1.1" xmlns:ns3="http://www.opengis.net/ows/2.0" xmlns:ogc="http://www.opengis.net/ogc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.1.0" xsi:schemaLocation="http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd">
-    <ns2:Exception exceptionCode="MissingParameterValue" locator="request">
-        <ns2:ExceptionText>The parameter REQUEST must be specified</ns2:ExceptionText>
-    </ns2:Exception>
-    </ns2:ExceptionReport>
+        `{
+	"links": [{
+		"href": "http://localhost:${ADES_PORT}/WS/wps/default",
+		"rel": "self",
+		"type": "application/json"
+	}, {
+		"href": "http://localhost:${ADES_PORT}/WS/wps/default/api",
+		"rel": "service",
+		"type": "application/json"
+	}, {
+		"href": "http://localhost:${ADES_PORT}/WS/wps/default/conformance",
+		"rel": "conformance",
+		"type": "application/json"
+	}, {
+		"href": "http://localhost:${ADES_PORT}/WS/wps/default/processes",
+		"rel": "processes",
+		"type": "application/json"
+	}]
+    }`
 
 Get the list of available processes (should be empty):
 
@@ -94,7 +112,7 @@ The answer should be
     Transfer-Encoding: chunked
     Date: Tue, 25 Sep 2018 20:09:14 GMT
 
-    {"id":"OK","processSummary":{"id":"NDVIMultiSensor","title":"NDVIMultiSensor","keywords":[],"metadata":[],"additionalParameters":[],"version":"1.0.0","jobControlOptions":["async-execute"],"outputTransmission":["reference"],"processDescriptionURL":"http://localhost:9999/WS/wps/default/processes/NDVIMultiSensor","abstract":""}}
+    {"id":"OK","processSummary":{"id":"NDVIMultiSensor","title":"NDVIMultiSensor","keywords":[],"metadata":[],"additionalParameters":[],"version":"1.0.0","jobControlOptions":["async-execute"],"outputTransmission":["reference"],"processDescriptionURL":"http://localhost:${ADES_PORT}/WS/wps/default/processes/NDVIMultiSensor","abstract":""}}
 
 You can check that the new process is available in the list of processes:
 
@@ -105,7 +123,7 @@ You can check that the new process is available in the list of processes:
 Execute the process
 
     # Set the path to the json process input parameters files
-    export INPUT_PROCESS_PARAMETERS_JSON=../application-packages/NDVIMultiSensor/Execute_NDVIMultiSensor.json
+    export INPUT_PROCESS_PARAMETERS_JSON=../application-packages/NDVIMultiSensor/Execute_NDVIMultiSensor_ADES.json
 
     # Deploy process
     curl -X POST \
@@ -121,7 +139,7 @@ The answer should be an HTTP 201 "Created"
     Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS
     Access-Control-Allow-Headers: Origin, access_token, X-Requested-With, Content-Type, Accept
     Access-Control-Allow-Credentials: true
-    Location: http://localhost:9999/WS/wps/default/processes/NDVIMultiSensor/jobs/0ee6840c-61d1-4fca-b231-82cd01249f1d
+    Location: http://localhost:${ADES_PORT}/WS/wps/default/processes/NDVIMultiSensor/jobs/0ee6840c-61d1-4fca-b231-82cd01249f1d
     Cache-Control: no-cache, no-store, max-age=0, must-revalidate
     Pragma: no-cache
     Expires: 0
@@ -133,10 +151,10 @@ The answer should be an HTTP 201 "Created"
 
 The **Location** property indicated the url to job status
 
-    curl -X GET "http://localhost:9999/WS/wps/default/processes/NDVIMultiSensor/jobs/0ee6840c-61d1-4fca-b231-82cd01249f1d"
+    curl -X GET "http://localhost:${ADES_PORT}/WS/wps/default/processes/NDVIMultiSensor/jobs/0ee6840c-61d1-4fca-b231-82cd01249f1d"
 
 Once the status is in success (i.e. {"status":"SUCCESSFUL","message":"Process completed."}), you can get the result
 
-    curl -X GET "http://localhost:9999/WS/wps/default/processes/NDVIMultiSensor/jobs/0ee6840c-61d1-4fca-b231-82cd01249f1d/result"
+    curl -X GET "http://localhost:${ADES_PORT}/WS/wps/default/processes/NDVIMultiSensor/jobs/0ee6840c-61d1-4fca-b231-82cd01249f1d/result"
 
 

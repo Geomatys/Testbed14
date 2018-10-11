@@ -1,0 +1,26 @@
+{
+  "inputs": [
+    {
+      "id": "StartDate",
+      "data": "2016-05-05T04:11:00Z"
+    },
+    {
+      "id": "aoi",
+      "data": "POLYGON((120 -10,155 -10,155 -30,120 -30))"
+    },
+    {
+      "id": "collection",
+      "data": "EOP:VITO:PDF:urn:ogc:def:EOP:VITO:PROBAV_P_V001"
+    },
+    {
+      "id": "EndDate",
+      "data": "2016-05-06T00:00:00Z"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "output",
+      "transmissionMode": "reference"
+    }
+  ]
+}

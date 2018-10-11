@@ -1,0 +1,147 @@
+{
+  "process": {
+    "id": "NDVIMultiSensor",
+    "title": "NDVIMultiSensor",
+    "keywords": [
+      "NDVI"
+    ],
+    "owsContext": {
+      "offering": {
+        "code": "http://www.opengis.net/eoc/applicationContext/cwl",
+        "content": {
+          "href": "https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensor/NDVIMultiSensor.cwl"
+        }
+      }
+    },
+    "inputs": [
+      {
+        "id": "StartDate",
+        "title": "Time of Interest",
+        "formats": [
+          {
+            "mimeType": "text/plain",
+            "default": true
+          }
+        ],
+        "minOccurs": "1",
+        "maxOccurs": "1",
+        "additionalParameters": [
+          {
+            "parameters": [
+              {
+                "name": "CatalogSearchField",
+                "values": ["startDate"]
+              }
+            ]
+          }
+        ],
+        "abstract": "Time of Interest (defined as Start date - End date)",
+        "LiteralDataDomain": {
+          "dataType": {
+            "name": "String"
+          }
+        }
+      },
+      {
+        "id": "EndDate",
+        "title": "Time of Interest",
+        "formats": [
+          {
+            "mimeType": "text/plain",
+            "default": true
+          }
+        ],
+        "minOccurs": "1",
+        "maxOccurs": "1",
+        "additionalParameters": [
+          {
+            "parameters": [
+              {
+                "name": "CatalogSearchField",
+                "values": ["endDate"]
+              }
+            ]
+          }
+        ],
+        "abstract": "Time of Interest (defined as Start date - End date)",
+        "LiteralDataDomain": {
+          "dataType": {
+            "name": "String"
+          }
+        }
+      },
+      {
+        "id": "aoi",
+        "title": "Area of Interest",
+        "formats": [
+          {
+            "mimeType": "OGC-WKT",
+            "default": true
+          }
+        ],
+        "minOccurs": "1",
+        "maxOccurs": "1",
+        "additionalParameters": [
+          {
+            "parameters": [
+              {
+                "name": "CatalogSearchField",
+                "values": ["bbox"]
+              }
+            ]
+          }
+        ],
+        "abstract": "Area of Interest (Bounding Box)"
+      },
+      {
+        "id": "collection",
+        "title": "Collection of the data.",
+        "formats": [
+          {
+            "mimeType": "text/plain",
+            "default": true
+          }
+        ],
+        "minOccurs": "1",
+        "maxOccurs": "1",
+        "additionalParameters": [
+          {
+            "parameters": [
+              {
+                "name": "CatalogSearchField",
+                "values": ["parentIdentifier"]
+              }
+            ]
+          }
+        ],
+        "abstract": "Collection",
+        "LiteralDataDomain": {
+          "dataType": {
+            "name": "String"
+          }
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "id": "output",
+        "title": "NDVI Images",
+        "formats": [
+          {
+            "mimeType": "application/octet-stream",
+            "default": true
+          }
+        ]
+      }
+    ],
+    "executeEndpoint": "http://tbd14.geomatys.com/WS/wps/default/processes/NDVIMultiSensor/jobs",
+    "abstract": "Normalized Difference Vegetation Index (NDVI) from an input list of satellite images."
+  },
+  "processVersion": "1.0.0",
+  "jobControlOptions": [
+    "async-execute"
+  ],
+  "outputTransmission": [
+    "reference"
+  ]
+}

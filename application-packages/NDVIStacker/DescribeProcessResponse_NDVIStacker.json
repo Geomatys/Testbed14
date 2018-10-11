@@ -1,0 +1,49 @@
+{
+  "process": {
+    "id": "NDVIStacker",
+    "title": "NDVIStacker",
+    "owsContext": {
+      "offering": {
+        "code": "http://www.opengis.net/eoc/applicationContext/cwl",
+        "content": {
+          "href": "https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIStacker/NDVIStacker.cwl"
+        }
+      }
+    },
+    "inputs": [
+      {
+        "id": "files",
+        "title": "Input NDVI Image",
+        "formats": [
+          {
+            "mimeType": "image/tiff",
+            "default": true
+          }
+        ],
+        "minOccurs": "1",
+        "maxOccurs": "unbounded"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "output",
+        "title": "NDVI Image",
+        "formats": [
+          {
+            "mimeType": "application/octet-stream",
+            "default": true
+          }
+        ]
+      }
+    ],
+    "executeEndpoint": "http://tbd14.geomatys.com/WS/wps/default/processes/NDVIStacker/jobs",
+    "abstract": ""
+  },
+  "processVersion": "1.0.0",
+  "jobControlOptions": [
+    "async-execute"
+  ],
+  "outputTransmission": [
+    "reference"
+  ]
+}
