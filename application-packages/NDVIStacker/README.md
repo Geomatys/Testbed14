@@ -3,10 +3,11 @@
 This process merge multiple [Normalized Difference Vegetation Index](https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index) (NDVI) TIFF files into one GeoTIFF.
 
 The process support the following image types:
-* NDVI - as a GeoTIFF file
+* GeoTIFF file
 
-If each input image as the same CRS the process generate the output image as a GeoTIFF with the same CRS and resolution as the originals.
-If not, all the inputs image will be reprojected to EPSG:4326 before the merge.
+If each input images has the same CRS, then the output image is a GeoTIFF with the same CRS and resolution as the input images.
+
+If the input images CRS differ, then all input images are reprojected to EPSG:4326 before being merged. Thus, the output image is a GeoTIFF in EPSG:4326 CRS.
 
 ## Requirements
 This process requires the following components to be installed:
@@ -52,7 +53,7 @@ To execute the process:
 
 The result (e.g. out.tif) is available within ${WORKDIR}
 
-*Note 1: Input files defined in NDVIStacker_CWL_params.json can be  paths or urls*
+*Note 1: Input files defined in NDVIStacker_CWL_params.json can be paths or urls*
 
 *Note 2: the process will use the docker image images.geomatys.com/ndvis:latest*
 

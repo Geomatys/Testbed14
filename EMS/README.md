@@ -17,22 +17,33 @@ First retrieve the docker image from Geomatys public repository
     docker pull images.geomatys.com/examind-ems
 
 ### Deployment
-To deploy an EMS container you need to map the different ADES to contact on MEP, regarding of the data collection requested.
-This parameter is encoded as a json map as : 
-{ "ADES_URL" : data collections list}
+To deploy an EMS container you need to define the different available ADES endpoints.
+
+We distinguished two kind of ADES:
+
+* The "MEP ADES" i.e. linked with one or more products collection
+* Independant ADES linked with not collection in particular i.e. PFC ADES
+
+The "MEP ADES" urls are encoded as a JSON string with the following format:
+
+    {
+        "ades_url_1":[collection1, collection2, etc.],
+        "ades_url_2":[collectionA, collectionB, etc.]
+    }
+
+For instance the VITO platform host an ADES which support PROBAV_P_V001 collection:
 
     export ADES_URLS={"http://ades.vgt.vito.be/WS/wps/default" : ["EOP:VITO:PDF:urn:ogc:def:EOP:VITO:PROBAV_P_V001"]}
 
-A PFC ADES is also required for non-MEP execution :
+The PFC ADES is required for non MEP execution:
 
     export ADES_PFC_URL="http://ades.vgt.vito.be/WS/wps/default"
 
-For authentication, define the IDP URL :
+For authentication, the IdP userInfo endpoint should be provided :
 
     export IDP_URL="https://eodata-iam.user.eocloud.eu:8080/oauth2/userinfo?schema=openid"
 
 Then defines the port to run EMS on localhost.
-
 
     export EMS_PORT=9999
 
@@ -46,8 +57,6 @@ Deploy an ADES instance
         -e CSTL_URL=http://localhost:${EMS_PORT} \
         -e CSTL_SERVICE_URL=http://localhost:${EMS_PORT}/WS images.geomatys.com/examind-ems
 
-#### 
-
 ### Check deployment
 
 Check if EMS is correctly deployed:
@@ -56,25 +65,30 @@ Check if EMS is correctly deployed:
 
 You should get the following answer
 
-    `{
-	"links": [{
-		"href": "http://localhost:${EMS_PORT}/WS/wps/default",
-		"rel": "self",
-		"type": "application/json"
-	}, {
-		"href": "http://localhost:${EMS_PORT}/WS/wps/default/api",
-		"rel": "service",
-		"type": "application/json"
-	}, {
-		"href": "http://localhost:${EMS_PORT}/WS/wps/default/conformance",
-		"rel": "conformance",
-		"type": "application/json"
-	}, {
-		"href": "http://localhost:${EMS_PORT}/WS/wps/default/processes",
-		"rel": "processes",
-		"type": "application/json"
-	}]
-    }`
+    {
+        "links": [
+            {
+                "href": "http://localhost:${EMS_PORT}/WS/wps/default",
+                "rel": "self",
+                "type": "application/json"
+            },
+            {
+                "href": "http://localhost:${EMS_PORT}/WS/wps/default/api",
+                "rel": "service",
+                "type": "application/json"
+            },
+            {
+                "href": "http://localhost:${EMS_PORT}/WS/wps/default/conformance",
+                "rel": "conformance",
+                "type": "application/json"
+            },
+            {
+                "href": "http://localhost:${EMS_PORT}/WS/wps/default/processes",
+                "rel": "processes",
+                "type": "application/json"
+            }
+        ]
+    }
 
 Get the list of available processes (should be empty):
 
