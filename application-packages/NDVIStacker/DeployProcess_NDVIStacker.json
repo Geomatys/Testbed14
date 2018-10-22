@@ -3,6 +3,14 @@
         "process": {
             "id": "NDVIStacker",
             "title": "NDVIStacker",
+            "owsContext": {
+                "offering": {
+                    "code": "http://www.opengis.net/eoc/applicationContext/cwl",
+                    "content": {
+                        "href": "https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIStacker/NDVIStacker.cwl"
+                    }
+                }
+            },
             "abstract": "",
             "inputs": [
                 {
@@ -39,10 +47,9 @@
             "reference"
         ]
     },
-  "immediateDeployment": true,
-  "executionUnit": [{
-      "href": "https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIStacker/NDVIStacker.cwl"
-  }],
-  "deploymentProfileName" : "http://www.opengis.net/profiles/eoc/dockerizedApplication"
+    "immediateDeployment": true,
+    "executionUnit": [{
+            "href": "images.geomatys.com/ndvis:latest"
+        }],
+    "deploymentProfileName": "http://www.opengis.net/profiles/eoc/dockerizedApplication"
 }
-
