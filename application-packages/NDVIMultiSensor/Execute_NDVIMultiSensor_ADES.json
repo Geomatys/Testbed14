@@ -14,5 +14,7 @@
             "id": "output",
             "transmissionMode": "reference"
         }
-    ]
+    ],
+    "mode": "async",
+    "response": "document"
 }

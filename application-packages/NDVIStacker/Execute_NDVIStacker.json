@@ -1,18 +1,20 @@
 {
-  "inputs": [
-    {
-      "id": "files",
-      "href": "https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160505_232748_3_V101.tif"
-    },
-    {
-      "id": "files",
-      "href": "https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160505_232949_3_V101.tif"
-    }
-  ],
-  "outputs": [
-    {
-      "id": "output",
-      "transmissionMode": "reference"
-    }
-  ]
+    "inputs": [
+        {
+            "id": "files",
+            "href": "https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160505_232748_3_V101.tif"
+        },
+        {
+            "id": "files",
+            "href": "https://nexus.geomatys.com/repository/raw-public/testbed14/PROBAV_L1C_20160505_232949_3_V101.tif"
+        }
+    ],
+    "outputs": [
+        {
+            "id": "output",
+            "transmissionMode": "reference"
+        }
+    ],
+    "mode": "async",
+    "response": "document"
 }
