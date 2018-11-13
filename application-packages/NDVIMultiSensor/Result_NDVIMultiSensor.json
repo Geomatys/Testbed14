@@ -1,0 +1,12 @@
+{
+  "outputs": [
+    {
+      "id": "output",
+      "data": "http://ades.vgt.vito.be/webdav/wps-default/71971de0-0f07-4f08-bb8e-8e0e970f0688-results/030dc19a-2494-4278-9868-33d02c7056a7.tif"
+    },
+    {
+      "id": "output",
+      "data": "http://ades.vgt.vito.be/webdav/wps-default/71971de0-0f07-4f08-bb8e-8e0e970f0688-results/e560785d-df78-4c31-83bc-7151aa6e8eb6.tif"
+    }
+  ]
+}

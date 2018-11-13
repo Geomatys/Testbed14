@@ -36,11 +36,11 @@
           }
         ],
         "abstract": "Time of Interest (defined as Start date - End date)",
-        "LiteralDataDomain": {
+        "literalDataDomains": [{
           "dataType": {
             "name": "String"
           }
-        }
+        }]
       },
       {
         "id": "EndDate",
@@ -64,11 +64,11 @@
           }
         ],
         "abstract": "Time of Interest (defined as Start date - End date)",
-        "LiteralDataDomain": {
+        "literalDataDomains": [{
           "dataType": {
             "name": "String"
           }
-        }
+        }]
       },
       {
         "id": "aoi",
@@ -115,11 +115,11 @@
           }
         ],
         "abstract": "Collection",
-        "LiteralDataDomain": {
+        "literalDataDomains": [{
           "dataType": {
             "name": "String"
           }
-        }
+        }]
       }
     ],
     "outputs": [
