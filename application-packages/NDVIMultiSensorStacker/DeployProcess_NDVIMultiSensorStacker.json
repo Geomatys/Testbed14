@@ -1,0 +1,99 @@
+{
+    "processDescription": {
+        "process": {
+            "id": "NDVIMultiSensorStacker",
+            "title": "Multi Sensor NDVI Stack Generator",
+            "owsContext": {
+                "offering": {
+                    "code": "http://www.opengis.net/eoc/applicationContext/cwl",
+                    "content": {
+                        "href": "https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensorStacker/NDVIMultiSensorStacker.cwl"
+                    }
+                }
+            },
+            "abstract": "Workflow Multi Sensor NDVI Stack Generator",
+            "keywords": ["NDVI"],
+            "additionalParameters": [{
+                    "role": "http://www.opengis.net/eoc/applicationContext",
+                    "parameters": [{
+                            "name": "UniqueAOI",
+                            "values": ["true"]
+                        },
+                        {
+                            "name": "UniqueTOI",
+                            "values": ["true"]
+                        }
+                    ]
+                }],
+            "inputs": [{
+                    "id": "image-s2",
+                    "title": "S2 Input Image",
+                    "formats": [{
+                            "mimeType": "application/zip",
+                            "default": true
+                        }],
+                    "minOccurs": "1",
+                    "maxOccurs": "unbounded",
+                    "additionalParameters": [{
+                            "role": "http://www.opengis.net/eoc/applicationContext/inputMetadata",
+                            "parameters": [{
+                                    "name": "EOImage",
+                                    "values": ["true"]
+                                },
+                                {
+                                    "name": "AllowedCollections",
+                                    "values": ["EOP:IPT:Sentinel2"]
+                                }
+                            ]
+                        }]
+                },
+                {
+                    "id": "image-probav",
+                    "title": "ProbaV Input Image",
+                    "formats": [{
+                            "mimeType": "application/zip",
+                            "default": true
+                        }],
+                    "minOccurs": "1",
+                    "maxOccurs": "unbounded",
+                    "additionalParameters": [{
+                            "role": "http://www.opengis.net/eoc/applicationContext/inputMetadata",
+                            "parameters": [{
+                                    "name": "EOImage",
+                                    "values": ["true"]
+                                },
+                                {
+                                    "name": "AllowedCollections",
+                                    "values": ["urn:ogc:def:EOP:VITO:PROBAV_P_V001"]
+                                }
+
+                            ]
+                        }]
+                }
+            ],
+            "outputs": [{
+                    "id": "output",
+                    "title": "NDVI output file",
+                    "formats": [{
+                            "mimeType": "application/octet-stream",
+                            "default": true
+                        }]
+                }]
+        },
+        "processVersion": "1.0.0",
+        "jobControlOptions": [
+            "async-execute"
+        ],
+        "outputTransmission": [
+            "reference"
+        ]
+    },
+    "immediateDeployment": true,
+    "executionUnit": [{
+            "href": "images.geomatys.com/ndvims:latest"
+        },
+        {
+            "href": "images.geomatys.com/ndvis:latest"
+        }],
+    "deploymentProfileName": "http://www.opengis.net/profiles/eoc/workflow"
+}
