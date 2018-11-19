@@ -11,7 +11,7 @@
                     }
                 }
             },
-            "abstract": "Workflow Multi Sensor NDVI Stack Generator",
+            "abstract": "Workflow Multi Sensor NDVI Stack",
             "keywords": ["NDVI"],
             "additionalParameters": [{
                     "role": "http://www.opengis.net/eoc/applicationContext",

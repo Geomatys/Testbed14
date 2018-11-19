@@ -1,0 +1,212 @@
+{
+    "process": {
+        "id": "NDVIMultiSensorStacker",
+        "title": "Multi Sensor NDVI Stack Generator",
+        "keywords": [
+            "NDVI"
+        ],
+        "owsContext": {
+            "offering": {
+                "code": "http://www.opengis.net/eoc/applicationContext/cwl",
+                "content": {
+                    "href": "https://raw.githubusercontent.com/Geomatys/Testbed14/master/application-packages/NDVIMultiSensorStacker/NDVIMultiSensorStacker.cwl"
+                }
+            }
+        },
+        "additionalParameters": [
+            {
+                "role": "http://www.opengis.net/eoc/applicationContext",
+                "parameters": [
+                    {
+                        "name": "UniqueAOI",
+                        "values": [
+                            "true"
+                        ]
+                    },
+                    {
+                        "name": "UniqueTOI",
+                        "values": [
+                            "true"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "inputs": [
+            {
+                "id": "StartDate",
+                "title": "Time of Interest",
+                "formats": [
+                    {
+                        "mimeType": "text/plain",
+                        "default": true
+                    }
+                ],
+                "minOccurs": "1",
+                "maxOccurs": "1",
+                "additionalParameters": [
+                    {
+                        "parameters": [
+                            {
+                                "name": "CatalogSearchField",
+                                "values": [
+                                    "startDate"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "abstract": "Time of Interest (defined as Start date - End date)",
+                "literalDataDomains": [
+                    {
+                        "dataType": {
+                            "name": "String"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "EndDate",
+                "title": "Time of Interest",
+                "formats": [
+                    {
+                        "mimeType": "text/plain",
+                        "default": true
+                    }
+                ],
+                "minOccurs": "1",
+                "maxOccurs": "1",
+                "additionalParameters": [
+                    {
+                        "parameters": [
+                            {
+                                "name": "CatalogSearchField",
+                                "values": [
+                                    "endDate"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "abstract": "Time of Interest (defined as Start date - End date)",
+                "literalDataDomains": [
+                    {
+                        "dataType": {
+                            "name": "String"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "aoi",
+                "title": "Area of Interest",
+                "formats": [
+                    {
+                        "mimeType": "OGC-WKT",
+                        "default": true
+                    }
+                ],
+                "minOccurs": "1",
+                "maxOccurs": "1",
+                "additionalParameters": [
+                    {
+                        "parameters": [
+                            {
+                                "name": "CatalogSearchField",
+                                "values": [
+                                    "bbox"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "abstract": "Area of Interest (Bounding Box)"
+            },
+            {
+                "id": "collection_image-s2",
+                "title": "Collection of the data.",
+                "formats": [
+                    {
+                        "mimeType": "text/plain",
+                        "default": true
+                    }
+                ],
+                "minOccurs": "1",
+                "maxOccurs": "1",
+                "additionalParameters": [
+                    {
+                        "parameters": [
+                            {
+                                "name": "CatalogSearchField",
+                                "values": [
+                                    "parentIdentifier"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "abstract": "Collection",
+                "literalDataDomains": [
+                    {
+                        "dataType": {
+                            "name": "String"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "collection_image-probav",
+                "title": "Collection of the data.",
+                "formats": [
+                    {
+                        "mimeType": "text/plain",
+                        "default": true
+                    }
+                ],
+                "minOccurs": "1",
+                "maxOccurs": "1",
+                "additionalParameters": [
+                    {
+                        "parameters": [
+                            {
+                                "name": "CatalogSearchField",
+                                "values": [
+                                    "parentIdentifier"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "abstract": "Collection",
+                "literalDataDomains": [
+                    {
+                        "dataType": {
+                            "name": "String"
+                        }
+                    }
+                ]
+            }
+        ],
+        "outputs": [
+            {
+                "id": "output",
+                "title": "NDVI output file",
+                "formats": [
+                    {
+                        "mimeType": "application/octet-stream",
+                        "default": true
+                    }
+                ]
+            }
+        ],
+        "executeEndpoint": "http://tbd14.geomatys.com/WS/wps/default/processes/NDVIMultiSensorStacker/jobs",
+        "abstract": "Workflow Multi Sensor NDVI Stack"
+    },
+    "processVersion": "1.0.0",
+    "jobControlOptions": [
+        "async-execute"
+    ],
+    "outputTransmission": [
+        "reference"
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "inputs": [
+        {
+            "id": "StartDate",
+            "data": "2016-05-05T04:11:00Z"
+        },
+        {
+            "id": "collection_image-probav",
+            "data": "urn:ogc:def:EOP:VITO:PROBAV_P_V001"
+        },
+        {
+            "id": "aoi",
+            "data": "19,-12,20,-11"
+        },
+        {
+            "id": "collection_image-s2",
+            "data": "EOP:IPT:Sentinel2"
+        },
+        {
+            "id": "EndDate",
+            "data": "2016-05-06T00:00:00Z"
+        }
+    ],
+    "outputs": [
+        {
+            "id": "output",
+            "transmissionMode": "reference"
+        }
+    ],
+    "mode": "async",
+    "response": "document"
+}
