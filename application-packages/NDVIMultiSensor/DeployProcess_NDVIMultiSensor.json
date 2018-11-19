@@ -46,7 +46,7 @@
                     "title": "NDVI Images",
                     "formats": [
                         {
-                            "mimeType": "application/octet-stream",
+                            "mimeType": "image/tif",
                             "default": true
                         }
                     ]
