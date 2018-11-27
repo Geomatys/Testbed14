@@ -1,14 +1,16 @@
 class: Workflow
 cwlVersion: v1.0
-id: multisensor_ndvi_stacker
-doc: NDVIMultiSensor followed by NDVIStacker.
-label: multisensor_ndvi_stacker
+id: multisensor_ndvi_stack_generator
+doc: This is a mockup of the MultiSensorNDVIStackGenerator.
+label: MultiSensor-NDVI-Stack-Generator
 requirements:
   - class: MultipleInputFeatureRequirement
 inputs:
   - id: image-s2
     type: File
   - id: image-probav
+    type: File
+  - id: image-deimos
     type: File
 outputs:
   - id: output
@@ -32,6 +34,14 @@ steps:
     out:
       - id: output
     run: 'NDVIMultiSensor.cwl'
+  - id: multisensor-ndvi-urthecast
+    label: MultiSensorNDVI-UrtheCast
+    in:
+      - id: files
+        source: image-deimos
+    out:
+      - id: output
+    run: 'NDVIMultiSensor.cwl'
   - id: ndvi-stacker-pfc
     label: NDVIStacker
     in:
@@ -39,6 +49,7 @@ steps:
         source:
           - multisensor-ndvi-ipt/output
           - multisensor-ndvi-vito/output
+          - multisensor-ndvi-urthecast/output
     out:
       - id: output
     run: 'NDVIStacker.cwl'
