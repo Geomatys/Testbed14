@@ -11,7 +11,10 @@
             "inputBinding": {
                 "position": 1
             },
-            "type": "File",
+            "type": {
+                "type": "array",
+                "items": "File"
+            }
         },
     },
     "outputs": {
