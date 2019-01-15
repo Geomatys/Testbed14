@@ -9,6 +9,7 @@ The NDVI is calculated as follows:
 The process support the following image types:
 * Sentinel-2 - as a zipped SAFE file
 * Proba-V - as a HDF5 file
+* Deimos - as a TIFF file
 
 For each input image, the process generate the NDVI as a GeoTIFF image with the same CRS and resolution as the original one
 
